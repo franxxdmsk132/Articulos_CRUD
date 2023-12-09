@@ -1,0 +1,191 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            min-height: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+    <title>DETALLES DE EGRESO</title>
+</head>
+<body>
+
+
+<br>
+
+<div class="container" align="left" th:if="${egresosDetalles}">
+    <h3 align="center">
+        <img th:src="@{/images/profile_200px.png}"
+             class="d-inline-block align-text-top" width="40" height="40"
+             alt="icon"> EGRESO DETALLES
+    </h3>
+    <h4 align="center"><a th:href="@{/egresosDetalles/list}"
+                          class="btn btn-warning btn-sm mb-3 d-inline-block align-text-top">ATRAS</a></h4>
+    <hr>
+    <p class="h4 mb-4">DETALLES DE EGRESO</p>
+
+
+    <table class="table  table-hover  table-striped">
+        <thead class="thead-info">
+        <tr th:if="${egresosDetalles}">
+            <th>ID Egresos D</th>
+            <td th:text="${egresosDetalles.id_egreso_detalles}"></td>
+        </tr>
+        </thead>
+        <tr th:if="${egresosDetalles}">
+            <th>Cantidad</th>
+            <td th:text="${egresosDetalles.cantidad}"></td>
+        </tr>
+        <tr th:if="${egresosDetalles}">
+            <th>Costo</th>
+            <td th:text="${egresosDetalles.costo}"></td>
+        </tr>
+        <!-- Separador y título para la sección de Detalles Egreso
+        <tr>
+            <th colspan="2" class="text-left text-muted" style="font-size: 14px">-----Detalles Egreso-----</th>
+        </tr>  -->
+
+        <tr th:if="${egresosDetalles}">
+            <th>Id egreso</th>
+            <td th:text="${egresosDetalles.egreso.id_egreso_cab}"></td>
+        </tr>
+        <tr th:if="${egresosDetalles}">
+            <th>Fecha</th>
+            <td th:text="${egresosDetalles.egreso.fecha}"></td>
+        </tr>
+
+        <!-- Separador y título para la sección de Detalles Bodegas -->
+        <tr>
+            <th colspan="2" class="text-left text-muted" style="font-size: 14px">-----DETALLES DE BODEGA-----</th>
+        </tr>
+
+        <tr th:if="${egresosDetalles}">
+            <th>#Bodega</th>
+            <td th:text="${egresosDetalles.egreso.bodega.codigo_bodega}"></td>
+        </tr>
+        <tr th:if="${egresosDetalles}">
+            <th>Codigo Bodega</th>
+            <td th:text="${egresosDetalles.egreso.bodega.codigoB}"></td>
+        </tr>
+        <tr th:if="${egresosDetalles}">
+            <th>Nombre Bodega</th>
+            <td th:text="${egresosDetalles.egreso.bodega.nombre}"></td>
+        </tr>
+        <!-- Separador y título para la sección de Detalles Articulos -->
+        <tr>
+            <th colspan="2" class="text-left text-muted" style="font-size: 14px">-----DETALLES DE ARTICULO-----</th>
+        </tr>
+
+        <tr th:if="${egresosDetalles}">
+            <th>Id Articulo</th>
+            <td th:text="${egresosDetalles.articulo.id_articulo}"></td>
+        </tr>
+        <tr th:if="${egresosDetalles}">
+            <th>Nombre Art.</th>
+            <td th:text="${egresosDetalles.articulo.nombre_articulo}"></td>
+        </tr>
+        <tr th:if="${egresosDetalles}">
+            <th>Clasificacion</th>
+            <td th:text="${egresosDetalles.articulo.clasificacion}"></td>
+        </tr>
+        <tr th:if="${egresosDetalles}">
+            <th>Codigo Articulo</th>
+            <td th:text="${egresosDetalles.articulo.codigoA}"></td>
+        </tr>
+        <tr th:if="${egresosDetalles}">
+            <th>Costo</th>
+            <td th:text="${egresosDetalles.articulo.costo_promedio}"></td>
+        </tr>
+        <tr th:if="${egresosDetalles}">
+            <th>Stock Actual</th>
+            <td th:text="${egresosDetalles.articulo.stock_actual}"></td>
+        </tr>
+        <tr th:if="${egresosDetalles}">
+            <th>Stock Min</th>
+            <td th:text="${egresosDetalles.articulo.stock_minimo}"></td>
+        </tr>
+        <tr th:if="${egresosDetalles}">
+            <th>Stock Max</th>
+            <td th:text="${egresosDetalles.articulo.stock_maximo}"></td>
+        </tr>
+        <tr th:if="${egresosDetalles}">
+            <th>Codigo Bodega</th>
+            <td th:text="${egresosDetalles.articulo.bodegas.codigoB}"></td>
+        </tr>
+        <tr th:if="${egresosDetalles}">
+            <th>Nombre Bodega</th>
+            <td th:text="${egresosDetalles.articulo.bodegas.nombre}"></td>
+        </tr>
+        <tr th:if="${egresosDetalles}">
+            <th>Ubicacion Bodega</th>
+            <td th:text="${egresosDetalles.articulo.bodegas.ubicacion}"></td>
+        </tr>
+
+        <tbody>
+        </tbody>
+
+    </table>
+    <div align="left">
+        <a th:href="@{/egresosDetalles/list}" class="btn btn-warning btn-sm mb-3">ATRAS</a>
+        <a th:href="@{/egresosDetalles/showFormForAdd}" class="btn btn-primary btn-sm mb-3"> AGREGAR EGRESO </a>
+        <a th:href="@{/egresosDetalles/showFormForUpdate(id_egreso_detalles=${egresosDetalles.id_egreso_detalles})}"
+           class="btn btn-info btn-sm mb-3"> ACTUALIZAR</a>
+        <a th:href="@{/egresosDetalles/delete(id_egreso_detalles=${egresosDetalles.id_egreso_detalles})}  "
+           class="btn btn-danger  btn-sm mb-3"
+           onclick="if (!(confirm('¿Está seguro de eliminar la sección de EGRESO?'))) return false">
+            ELIMINAR</a>
+    </div>
+
+</div>
+
+</body>
+</html>
+

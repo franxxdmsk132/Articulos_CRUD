@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" >xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            min-height: 100%;
+            overflow-x: hidden;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+        </style>
+    <title>Ingresos</title>
+</head>
+<body>
+<section id="header">
+    <nav class="navbar navbar navbar-dark bg-dark navbar-expand-lg" style="background-color: #e3f2fd;">
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto"> <!-- mx-auto centra los elementos -->
+                <!-- Aquí se agregan las nuevas direcciones -->
+                <li class="nav-item"><a class="nav-link" href="/bodegas/list">Bodegas</a></li>
+                <li class="nav-item"><a class="nav-link" href="/articulos/list">Artículos</a></li>
+                <li class="nav-item"><a class="nav-link" href="/egresosDetalles/list">Egresos</a></li>
+                <li class="nav-item"><a class="nav-link" href="/ingresos/list">Ingresos</a></li>
+                <!-- Fin de las nuevas direcciones -->
+            </ul>
+            <ul class="navbar-nav"> <!-- Esta lista estará a la derecha -->
+                <li class="nav-item active"><a class="nav-link" th:href="@{/logout}">Logout <img th:src="@{/images/sign_out_32px.png}" class="d-inline-block align-text-top" width="25" height="25" alt="icon"></a></li>
+            </ul>
+        </div>
+    </nav>
+</section>
+<br>
+<div class="container" align="center">
+    <h3>
+        <img th:src="@{/images/profile_200px.png}"
+             class="d-inline-block align-text-top" width="40" height="40"
+             alt="icon"> LISTA DE INGRESOS
+    </h3>
+    <hr>
+    <div class="d-flex justify-content-between">
+        <a th:href="@{/articulos/showFormForAdd}" class="btn btn-primary btn-sm mb-3">Agregar  otro Articulo</a>
+        <br>
+    </div>
+
+    <table class="table  table-hover ">
+        <thead class="thead-dark">
+        <tr>
+            <th>ID Ingresos</th>
+            <th>FECHA</th>
+            <th>ID BODEGA</th>
+            <th>ACCIONES</th>
+
+
+        </tr>
+        </thead>
+        <tr th:each="tempIngresos, i: ${ingresos}">
+            <td th:text="${tempIngresos.id_ingresocab}"></td>
+            <td th:text="${tempIngresos.fecha}" />
+            <td th:text="${tempIngresos.bodega.codigo_bodega}" />
+
+            <td><a
+                    th:href="@{/articulos/showArticuloDetails(codigoA=${tempIngresos.id_ingresocab})}"
+                    class="btn btn-success btn-sm"> DETALLES </a> <a
+                    th:href="@{/articulos/showFormForUpdate(codigoA=${tempIngresos.id_ingresocab})}"
+                    class="btn btn-info btn-sm"> ACTUALIZACIONES </a> <a
+                    th:href="@{/articulos/delete(codigoA=${tempIngresos.id_ingresocab})}"
+                    class="btn btn-danger btn-sm"
+                    onclick="if (!(confirm('¿Está seguro de eliminar la sección de INGRESOS?'))) return false">
+                ELIMINAR </a></td>
+
+        </tr>
+        <tbody>
+
+        </tbody>
+
+    </table>
+    <a th:href="@{/egresos/list}" class="btn btn-warning btn-sm mb-3">CARGAR
+    </a>
+    <p class="text-danger warning" th:if="${searchWarning}" th:text="${searchWarning}"></p>
+
+</div>
+</body>
+
+
+
+
+</html>
+
+
+
+
+
