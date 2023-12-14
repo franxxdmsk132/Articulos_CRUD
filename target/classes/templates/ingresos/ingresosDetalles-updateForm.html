@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            min-height: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+    <title>DETALLES DE INGRESO</title>
+</head>
+<body>
+<section id="header">
+
+</section>
+
+<br>
+
+<div class="container">
+
+
+    <h3 align="center">
+        <img th:src="@{/images/profile_200px.png}"
+             class="d-inline-block align-text-top" width="40" height="40"
+             alt="icon"> ACTUALIZAR LOS INGRESOS
+    </h3>
+    <h4 align="center"><a th:href="@{/ingresosDetalles/list}"
+                          class="btn btn-warning btn-sm mb-3 d-inline-block align-text-top">ATRAS</a></h4>
+    <hr>
+
+    <p class="h4 mb-4">ACTUALIZAR LOS DETALLES</p>
+
+
+
+    <form action="#" th:action="@{/ingresoDetalles/update}"
+          th:object="${ingresoDetallesu}" method="POST">
+        <!-- Add hidden form field to handle update -->
+        <input type="hidden" th:field="*{id_Ingresos_detalle}" class="form-control mb-2 col-4"  placeholder="ID Ingreso"/>
+        <input type="text" th:field="*{cantidad_ingresada}" class="form-control mb-2 col-4" placeholder="Cantidad ingresada "/>
+        <input type="text" th:field="*{precio_compra}" class="form-control mb-2 col-4" placeholder="Precio compra ">
+
+        <select th:field="*{articulo.id_articulo}" class="form-control mb-2 col-4">
+            <option value="">Seleccione Articulo</option>
+            <th:block th:each="articulo : ${allArticulos}">
+                <option th:value="${articulo.id_articulo}"
+                        th:text="${articulo.nombre_articulo + ' - ' + articulo.codigoA}"></option>
+            </th:block>
+        </select>
+        <br>
+        <select th:field="*{ingreso.id_ingresocab}" class="form-control mb-2 col-4">
+            <option value="">Seleccione Bodega de Ingreso</option>
+            <th:block th:each="ingreso: ${allIngresos}">
+                <option th:value="${ingreso.id_ingresocab}"
+                        th:text="${ingreso.bodega.nombre + ' - ' + ingreso.fecha}"></option>
+            </th:block>
+        </select>
+
+        <button type="submit" class="btn btn-success mb-2 col-2">GUARDAR</button>
+    </form>
+
+
+    <a th:href="@{/ingresoDetalles/list}" class="btn btn-warning mb-2 col-2">REGRESAR
+    </a>
+</div>
+
+</body>
+</html>
