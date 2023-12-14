@@ -11,9 +11,9 @@
 	</parent>
 	<groupId>com.tf4.ems.main</groupId>
 	<artifactId>spring-boot-ems-app</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<packaging>jar</packaging>
-	<name>EMS-CRUD</name>
+	<name>ARTICULOS-CRUD</name>
 	<description>Spring Boot EMS Application</description>
 	<properties>
 		<java.version>11</java.version>
