@@ -1,7 +1,6 @@
 package com.tf4beta.ems.main.controllers;
 import com.tf4beta.ems.main.entity.Bodega;
 import com.tf4beta.ems.main.service.BodegaService;
-import lombok.var;
 import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ContentDisposition;
